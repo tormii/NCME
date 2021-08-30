@@ -31,14 +31,15 @@ MAX_ITER = 1000;
 ABSTOL   = 1e-4;
 RELTOL   = 1e-2;
 % Data preprocessing
-[m, n] = size(A);
+[~, n] = size(A);
+[m,~] = size(D);
 
 % save a matrix-vector multiply
 Atb = A'*b;
 % ADMM solver
 x = zeros(n,1);
-z = zeros(n,1);
-u = zeros(n,1);
+z = zeros(m,1);
+u = zeros(m,1);
 
 % cache the factorization
 [L U] = factor(A, D,rho);
